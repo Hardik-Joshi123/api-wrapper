@@ -38,12 +38,14 @@ class FinancialAdapter(BaseAdapter):
     
     def _parse_financial_table(self, table):
         # Simplified financial table parser
-        headers = [th.get_text().strip() for th in table.select('tr:first-child th')]
+        headers = [th.get_text().strip() if th else None for th in table.select('tr:first-child th')]
         data = {}
         
         for row in table.select('tr'):
-            label = row.select_one('td:first-child').get_text().strip()
-            values = [td.get_text().strip() for td in row.select('td')[1:]]
+            label_elem = row.select_one('td:first-child')
+            label = label_elem.get_text().strip() if label_elem else None
+            value_elems = row.select('td')[1:]
+            values = [td.get_text().strip() if td else None for td in value_elems]
             
             if label and values:
                 data[label] = dict(zip(headers[1:], values))
