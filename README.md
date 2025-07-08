@@ -111,4 +111,8 @@ Please follow the existing code style and add docstrings to new functions/classe
 ---
 
 ## License
-[MIT](LICENSE) 
+
+This project is licensed under the [MIT License](LICENSE). This means:
+- **You are free to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the software.**
+- The software is provided "as is", without warranty of any kind.
+- See the [LICENSE](LICENSE) file for full details. 
