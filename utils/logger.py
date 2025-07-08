@@ -1,5 +1,6 @@
 from loguru import logger
 import sys
+from config.settings import Settings
 
 def configure_logger():
     logger.remove()

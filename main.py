@@ -221,7 +221,7 @@ def run_demo():
     print("=" * 60)
     gov_data = api.extract_data("https://data.gov/dataset/example-data")
     print(f"Dataset title: {gov_data.get('title')}")
-    print(f"Formats available: {', '.join(set(d['format'] for d in gov_data.get('datasets', []))}\n")
+    print(f"Formats available: {', '.join(set(d['format'] for d in gov_data.get('datasets', [])))}\n")
     
     print("=" * 60)
     print("ACADEMIC PAPER EXTRACTION DEMO")
