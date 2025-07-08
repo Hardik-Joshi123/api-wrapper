@@ -33,8 +33,31 @@ class FinancialAdapter(BaseAdapter):
         tables = soup.find_all('table')
         for table in tables:
             if 'revenue' in table.get_text().lower():
-                return self._parse_financial_table(table)
-        return {}
+                data = self._parse_financial_table(table)
+                if isinstance(data, dict):
+                    data["type"] = "income-statement"
+                    return data
+        return {"type": "income-statement", "error": "No income statement table found"}
+
+    def _extract_balance_sheet(self, soup):
+        tables = soup.find_all('table')
+        for table in tables:
+            if 'assets' in table.get_text().lower():
+                data = self._parse_financial_table(table)
+                if isinstance(data, dict):
+                    data["type"] = "balance-sheet"
+                    return data
+        return {"type": "balance-sheet", "error": "No balance sheet table found"}
+
+    def _extract_cash_flow(self, soup):
+        tables = soup.find_all('table')
+        for table in tables:
+            if 'cash' in table.get_text().lower():
+                data = self._parse_financial_table(table)
+                if isinstance(data, dict):
+                    data["type"] = "cash-flow"
+                    return data
+        return {"type": "cash-flow", "error": "No cash flow table found"}
     
     def _parse_financial_table(self, table):
         # Simplified financial table parser
