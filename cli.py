@@ -1,3 +1,4 @@
+import json
 import click
 from main import ScraperAPI
 
