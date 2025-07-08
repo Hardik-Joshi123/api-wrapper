@@ -1,0 +1,11 @@
+requests==2.31.0
+requests-cache==1.1.1
+beautifulsoup4==4.12.2
+extruct==0.15.0
+lxml==4.9.3
+loguru==0.7.2
+python-dotenv==1.0.0
+click==8.1.7
+playwright==1.39.0  # Optional, for CAPTCHA bypass
+pytest==7.4.2  # For testing
+user-agents==2.2.0
